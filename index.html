@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>把保險說成聽得懂的話</title>
+<meta name="description" content="幫助 35～60 歲家庭，重新看懂自己的保險保障。專業、誠實、好懂。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #456B59;
+    --green-deep: #355445;
+    --green-soft: #A9BFAF;
+    --tea: #D8C6A5;
+    --tea-deep: #B89E74;
+    --cream: #F7F5EF;
+    --paper: #FFFDF8;
+    --ink: #2F3A34;
+    --ink-soft: #5E6A63;
+    --line: #E4DCCB;
+    --serif: "Noto Serif TC", "Source Han Serif TC", serif;
+    --sans: "Noto Sans TC", "Source Han Sans TC", system-ui, sans-serif;
+    --hand: "LXGW WenKai TC", "Noto Serif TC", serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.4; margin: 0; }
+  .hand { font-family: var(--hand); }
+  .eyebrow {
+    font-size: 13px; letter-spacing: .35em; color: var(--green);
+    font-weight: 500; margin-bottom: 14px; display: block;
+  }
+
+  /* ---------- 導覽列 ---------- */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(247, 245, 239, .92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--serif); font-weight: 700; font-size: 19px; color: var(--green-deep); }
+  .brand svg { width: 26px; height: 26px; }
+  .nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+  .nav ul a { text-decoration: none; color: var(--ink-soft); }
+  .nav ul a:hover { color: var(--green); }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 500;
+    background: var(--green); color: #fff; border-radius: 999px;
+    padding: 12px 28px; font-size: 16px; transition: background .2s;
+  }
+  .btn:hover { background: var(--green-deep); }
+  .btn.ghost { background: transparent; color: var(--green); border: 1.5px solid var(--green); }
+  .btn.ghost:hover { background: var(--green); color: #fff; }
+  .nav .btn { padding: 8px 20px; font-size: 14px; }
+
+  /* ---------- 首屏 ---------- */
+  .hero { position: relative; overflow: hidden; padding: 110px 0 120px; }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero h1 { font-size: clamp(34px, 6vw, 60px); color: var(--green-deep); letter-spacing: .04em; isolation: isolate; }
+  .hero h1 em { font-style: normal; position: relative; white-space: nowrap; }
+  .hero h1 em::after {
+    content: ""; position: absolute; left: -4px; right: -4px; bottom: .12em; height: .32em;
+    background: var(--tea); opacity: .55; z-index: -1; border-radius: 4px;
+  }
+  .hero p.lead { font-size: 19px; color: var(--ink-soft); max-width: 34em; margin: 26px 0 38px; }
+  .hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero .leaf-bg {
+    position: absolute; right: -60px; bottom: -40px; width: 460px; max-width: 70vw;
+    color: var(--green-soft); opacity: .55; pointer-events: none;
+  }
+  .hero .note { margin-top: 48px; font-size: 22px; color: var(--green); transform: rotate(-2deg); display: inline-block; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
+  .hero-grid h1 { font-size: clamp(32px, 4.6vw, 52px); }
+
+  /* ---------- 圖像風格：照片外框 ---------- */
+  /* 換照片時：把 <svg class="ph">…</svg> 換成 <img src="照片.jpg" alt="說明">，會自動套用品牌色調 */
+  .photo { position: relative; isolation: isolate; margin: 0; }
+  .photo::before {
+    content: ""; position: absolute; inset: 14px -14px -14px 14px;
+    border-radius: 18px; background: var(--tea); opacity: .55; z-index: -1;
+  }
+  .photo .ph, .photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; border-radius: 18px; }
+  .photo img { object-fit: cover; filter: saturate(.8) contrast(.94) brightness(1.03) sepia(.08); }
+  .photo.wide .ph, .photo.wide img { aspect-ratio: 3 / 1; }
+  .photo .stamp {
+    position: absolute; right: 16px; bottom: 14px; width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(247, 245, 239, .9); display: grid; place-items: center; color: var(--green);
+  }
+  .photo .stamp svg { width: 24px; height: 24px; }
+  .photo-cap { font-family: var(--hand); color: var(--green); font-size: 18px; margin: 26px 0 0; }
+  .card .ic { float: right; width: 30px; height: 30px; color: var(--green); }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 52px; }
+  .split .section-head { margin-bottom: 0; }
+
+  /* ---------- 通用區塊 ---------- */
+  section { padding: 96px 0; }
+  .section-head { max-width: 640px; margin-bottom: 52px; }
+  .section-head h2 { font-size: clamp(26px, 3.6vw, 36px); color: var(--green-deep); }
+  .section-head p { color: var(--ink-soft); margin: 14px 0 0; }
+  .alt { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+  /* ---------- 你是否也這樣 ---------- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 18px;
+    padding: 28px 26px;
+  }
+  .alt .card { background: var(--cream); }
+  .card .num { font-family: var(--serif); color: var(--tea-deep); font-size: 15px; letter-spacing: .1em; }
+  .card h3 { font-size: 20px; margin: 6px 0 10px; color: var(--ink); }
+  .card p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+  .closing { margin-top: 44px; font-size: 24px; color: var(--green); text-align: center; }
+  .closing span { background: linear-gradient(transparent 62%, rgba(216,198,165,.5) 62%); padding: 0 4px; }
+
+  /* ---------- 三個關鍵詞 ---------- */
+  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; text-align: center; }
+  .value .dot {
+    width: 128px; height: 128px; border-radius: 50%; margin: 0 auto 22px;
+    display: grid; place-items: center; color: #fff;
+    font-family: var(--serif); font-size: 28px; font-weight: 700; letter-spacing: .1em;
+  }
+  .value:nth-child(1) .dot { background: var(--green); }
+  .value:nth-child(2) .dot { background: var(--tea-deep); }
+  .value:nth-child(3) .dot { background: #8FAA97; }
+  .value h3 { font-size: 20px; margin-bottom: 8px; }
+  .value p { color: var(--ink-soft); margin: 0; font-size: 15.5px; }
+
+  /* ---------- 我的原則 ---------- */
+  .principle { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .nos { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+  .nos li {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px;
+    font-size: 18px; font-weight: 500;
+  }
+  .nos svg { flex: none; width: 26px; height: 26px; color: var(--tea-deep); }
+  .quote-card {
+    background: var(--green); color: var(--cream); border-radius: 22px;
+    padding: 52px 44px; position: relative; overflow: hidden;
+  }
+  .quote-card .eyebrow { color: var(--tea); }
+  .quote-card p { font-family: var(--hand); font-size: 30px; line-height: 1.7; margin: 0; }
+  .quote-card svg { position: absolute; right: 22px; bottom: 18px; width: 70px; color: var(--tea); opacity: .8; }
+
+  /* ---------- 怎麼開始 ---------- */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: step; }
+  .step { position: relative; padding-top: 18px; border-top: 2px solid var(--tea); }
+  .step::before {
+    counter-increment: step; content: "0" counter(step);
+    font-family: var(--serif); color: var(--green); font-size: 28px; font-weight: 700; display: block;
+  }
+  .step h3 { font-size: 19px; margin: 4px 0 8px; }
+  .step p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+
+  /* ---------- 常見問題 ---------- */
+  .faq { max-width: 780px; }
+  details { border-bottom: 1px solid var(--line); padding: 20px 0; }
+  summary {
+    cursor: pointer; list-style: none; font-weight: 500; font-size: 18px;
+    display: flex; justify-content: space-between; gap: 20px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--green); font-size: 24px; line-height: 1; transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin: 12px 0 0; color: var(--ink-soft); }
+
+  /* ---------- 聯絡 ---------- */
+  .contact {
+    background: var(--green); color: var(--cream); border-radius: 28px;
+    padding: 72px 48px; text-align: center; position: relative; overflow: hidden;
+  }
+  .contact h2 { font-size: clamp(26px, 4vw, 38px); color: #fff; }
+  .contact p { color: rgba(247,245,239,.85); margin: 16px auto 34px; max-width: 30em; }
+  .contact .btn { background: var(--cream); color: var(--green-deep); }
+  .contact .btn:hover { background: #fff; }
+  .contact .btn.ghost { background: transparent; color: var(--cream); border-color: var(--cream); }
+  .contact .btn.ghost:hover { background: var(--cream); color: var(--green-deep); }
+  .contact .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .contact .leaf { position: absolute; left: -30px; top: -20px; width: 180px; color: var(--tea); opacity: .25; }
+
+  footer { padding: 48px 0 56px; color: var(--ink-soft); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+  footer .sign { font-family: var(--hand); font-size: 22px; color: var(--green); line-height: 1.6; }
+
+  /* ---------- 手機 ---------- */
+  @media (max-width: 860px) {
+    .nav ul { display: none; }
+    .values { grid-template-columns: 1fr; gap: 40px; }
+    .principle { grid-template-columns: 1fr; gap: 36px; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+    .hero-grid, .split { grid-template-columns: 1fr; gap: 44px; }
+    .hero .leaf-bg { display: none; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 16px; }
+    body { font-size: 16px; }
+    section { padding: 72px 0; }
+    .hero { padding: 72px 0 90px; }
+    .steps { grid-template-columns: 1fr; }
+    .quote-card { padding: 40px 28px; }
+    .quote-card p { font-size: 25px; }
+    .contact { padding: 56px 22px; border-radius: 22px; }
+    .nav .btn { display: none; }
+    .photo::before { inset: 10px -8px -10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 葉子圖示，全站共用 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="leaf" viewBox="0 0 64 64">
+    <path d="M10 56C24 42 34 30 52 10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M22 44c-8-2-12-10-11-18 8 1 14 7 13 16M30 34c-6-6-6-15-1-22 6 5 8 13 3 21M36 28c8-1 15 3 18 10-8 3-15 0-19-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="branch" viewBox="0 0 200 220">
+    <path d="M30 210C70 150 110 90 170 20" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M62 162c-24-6-40-28-38-52 26 4 42 26 40 52z M84 130c-14-20-12-46 6-62 16 18 14 44-4 62z M108 98c-22-10-32-34-26-58 24 8 36 32 28 58z M126 74c4-24 24-42 48-42-2 24-22 42-46 44z M100 112c24-6 48 4 60 26-24 8-48-2-60-24z M74 150c24-2 46 12 54 36-24 4-46-10-54-34z" fill="currentColor"/>
+  </symbol>
+  <symbol id="no" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M5.5 5.5l13 13" stroke="currentColor" stroke-width="2"/>
+  </symbol>
+  <!-- 圖像風格：示意插畫，之後換成照片 -->
+  <defs>
+    <linearGradient id="win" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFBF0"/><stop offset="1" stop-color="#EDE3CF"/></linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EFE8DA"/><stop offset="1" stop-color="#E2D7C2"/></linearGradient>
+    <radialGradient id="glow" cx=".2" cy=".2" r=".9"><stop offset="0" stop-color="#FFF8E6" stop-opacity=".9"/><stop offset="1" stop-color="#FFF8E6" stop-opacity="0"/></radialGradient>
+  </defs>
+  <!-- 場景一：窗邊餐桌，一起看文件 -->
+  <symbol id="s-table" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid slice">
+    <rect width="480" height="360" fill="url(#wall)"/>
+    <rect x="40" y="30" width="170" height="200" rx="4" fill="url(#win)"/>
+    <path d="M125 30v200M40 130h170" stroke="#E2D7C2" stroke-width="6"/>
+    <rect width="480" height="360" fill="url(#glow)"/>
+    <g transform="translate(88 0)"><path d="M330 120c-10-30 0-60 20-70 6 30 0 55-20 70zM345 125c20-20 50-22 66-10-22 18-46 20-66 10zM338 118c-28-6-44-30-40-54 26 8 42 30 40 54z" fill="#8FAA97"/>
+    <path d="M340 160l-3-44" stroke="#6E8C79" stroke-width="3"/>
+    <path d="M318 160h44l-6 46h-32z" fill="#D8C6A5"/></g>
+    <rect y="235" width="480" height="125" fill="#C8AD87"/>
+    <rect y="235" width="480" height="8" fill="#B89E74" opacity=".5"/>
+    <g transform="rotate(-6 210 290)"><rect x="150" y="258" width="120" height="78" rx="3" fill="#FBF8F1"/><path d="M164 276h80M164 290h90M164 304h60M164 318h76" stroke="#C9C2B3" stroke-width="4" stroke-linecap="round"/></g>
+    <rect x="300" y="262" width="44" height="40" rx="6" fill="#F7F5EF"/><path d="M344 272c14 0 14 20 0 20" fill="none" stroke="#F7F5EF" stroke-width="5"/>
+    <ellipse cx="322" cy="264" rx="18" ry="4" fill="#9C7E5C"/>
+    <path d="M60 236c10-40 40-60 74-60s56 30 60 60z" fill="#7D9886"/>
+    <circle cx="128" cy="150" r="26" fill="#E8CDB4"/><path d="M102 146c0-22 14-34 28-34s26 12 26 26c-10-8-34-6-54 8z" fill="#5B4A3C"/>
+    <path d="M176 236c4-14 14-20 26-26l10 26z" fill="#E8CDB4"/>
+    <path d="M400 236c-6-44-30-64-58-66-30 2-50 30-52 66z" fill="#E6DCC9"/>
+    <circle cx="350" cy="148" r="24" fill="#E3C3A6"/><path d="M326 150c-2-24 12-36 26-36 16 0 26 14 24 30-6-10-30-10-50 6z" fill="#3F3A35"/>
+  </symbol>
+
+  <!-- 場景二：家人在客廳 -->
+  <symbol id="s-family" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid slice">
+    <rect width="480" height="360" fill="#ECE5D6"/>
+    <rect width="480" height="360" fill="url(#glow)"/>
+    <rect x="300" y="40" width="130" height="150" rx="4" fill="url(#win)" opacity=".9"/>
+    <rect x="40" y="200" width="400" height="90" rx="30" fill="#A9BFAF"/>
+    <rect x="60" y="170" width="360" height="60" rx="26" fill="#B7CBBC"/>
+    <rect y="300" width="480" height="60" fill="#D9CDB6"/>
+    <path d="M110 230c0-40 18-58 44-58s44 18 44 58z" fill="#F2EBDD"/><circle cx="154" cy="140" r="26" fill="#E8CDB4"/><path d="M128 138c0-22 14-32 28-32s26 12 26 30c-12-12-36-12-54 2z" fill="#5B4A3C"/>
+    <path d="M250 230c0-46 20-64 48-64s46 18 46 64z" fill="#7D9886"/><circle cx="298" cy="132" r="27" fill="#E3C3A6"/><path d="M272 128c2-20 14-28 28-28 14 0 26 10 24 28-14-8-36-8-52 0z" fill="#3F3A35"/>
+    <path d="M196 236c0-26 12-38 28-38s28 12 28 38z" fill="#D8C6A5"/><circle cx="224" cy="178" r="18" fill="#EED6BF"/><path d="M206 176c0-14 8-22 18-22s18 8 18 20c-8-6-24-6-36 2z" fill="#6B5644"/>
+    <rect x="200" y="214" width="40" height="28" rx="3" fill="#FBF8F1"/>
+  </symbol>
+
+  <!-- 場景三：桌面靜物特寫 -->
+  <symbol id="s-still" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid slice">
+    <rect width="480" height="360" fill="#D7BF9C"/>
+    <rect width="480" height="360" fill="url(#glow)"/>
+    <path d="M0 0h480v80c-160 30-320 10-480 40z" fill="#E7D9C1" opacity=".55"/>
+    <g transform="rotate(4 200 200)"><rect x="110" y="110" width="190" height="200" rx="4" fill="#FBF8F1"/><path d="M134 140h120M134 164h140M134 188h100M134 212h130M134 236h90" stroke="#D8D1C2" stroke-width="6" stroke-linecap="round"/><rect x="134" y="262" width="60" height="22" rx="11" fill="#A9BFAF"/></g>
+    <path d="M250 300l120-150" stroke="#456B59" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="380" cy="270" r="42" fill="#F7F5EF"/><circle cx="380" cy="270" r="32" fill="#9C7E5C"/><path d="M366 262c8-6 20-6 28 2" stroke="#B89E74" stroke-width="3" fill="none"/>
+    <path d="M40 330c20-40 60-60 90-50-20 30-50 50-90 50zM60 300c-10-40 10-80 40-90 6 36-10 70-40 90z" fill="#8FAA97"/>
+  </symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="16.5" cy="9.5" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 19c.5-3.5 2.8-5.5 5.5-5.5s5 2 5.5 5.5M14.5 14.2c.6-.3 1.3-.5 2-.5 2.2 0 3.8 1.6 4.1 4.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5M6 9.5V19h12V9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/><path d="M10 19v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 11h6M9 14.5h6M9 18h3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.5-3 7.8-7 9.5-4-1.7-7-5-7-9.5V6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.5 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <!-- 品牌名稱 -->
+    <a class="brand" href="#top"><svg><use href="#leaf"/></svg>男哥｜保險規劃</a>
+    <ul>
+      <li><a href="#for-you">我服務誰</a></li>
+      <li><a href="#values">我的方式</a></li>
+      <li><a href="#how">怎麼開始</a></li>
+      <li><a href="#faq">常見問題</a></li>
+    </ul>
+    <a class="btn" href="#contact">聊聊看</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏：我的一句話 -->
+  <section class="hero">
+    <svg class="leaf-bg" aria-hidden="true"><use href="#branch"/></svg>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">家庭保險規劃顧問</span>
+        <h1>把複雜的保險，<br>說成<em>你聽得懂</em>的話。</h1>
+        <p class="lead">幫助 35～60 歲的家庭，重新看懂自己的保險保障。<br>不推銷、不嚇你，先把現況講清楚，再一起決定下一步。</p>
+        <div class="actions">
+          <a class="btn" href="#contact">免費幫我看保單</a>
+          <a class="btn ghost" href="#for-you">先了解一下</a>
+        </div>
+        <div class="note hand">專業讓你安心，溫度讓你放心。</div>
+      </div>
+      <!-- 照片 01：你和客戶在窗邊餐桌一起看文件（3:2 或 4:3 橫式） -->
+      <figure class="photo">
+        <svg class="ph" viewBox="0 0 480 360" role="img" aria-label="在窗邊餐桌一起看保單"><use href="#s-table"/></svg>
+        <div class="stamp"><svg><use href="#leaf"/></svg></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 01 我服務誰 -->
+  <section id="for-you" class="alt">
+    <div class="wrap">
+      <div class="split">
+        <div class="section-head">
+          <span class="eyebrow">你是不是也這樣？</span>
+          <h2>家裡的保險，你真的看得懂嗎？</h2>
+          <p>你是家裡做決定的那個人，上有父母、下有孩子。保險早就買了，卻一直說不出它到底保了什麼。</p>
+          <p class="photo-cap">保險，是為了讓這樣的日常繼續。</p>
+        </div>
+        <!-- 照片 03：一家人在客廳的日常（可拍背影或側面） -->
+        <figure class="photo">
+          <svg class="ph" viewBox="0 0 480 360" role="img" aria-label="一家人在客廳相處"><use href="#s-family"/></svg>
+          <div class="stamp"><svg><use href="#leaf"/></svg></div>
+        </figure>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><div class="num">01</div>
+          <h3>有家要顧</h3>
+          <p>有小孩，或需要照顧年邁的父母，心裡總擔心萬一。</p>
+        </div>
+        <div class="card">
+          <svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg><div class="num">02</div>
+          <h3>買了，但不確定夠不夠</h3>
+          <p>已經有保險，卻不知道保障夠不夠、缺了哪一塊。</p>
+        </div>
+        <div class="card">
+          <svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg><div class="num">03</div>
+          <h3>保單像天書</h3>
+          <p>看不懂保單內容和理賠條款，每次翻開都想闔上。</p>
+        </div>
+        <div class="card">
+          <svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg><div class="num">04</div>
+          <h3>怕買錯、怕不能賠</h3>
+          <p>擔心重複投保浪費錢，更怕真正需要的時候卻不能賠。</p>
+        </div>
+      </div>
+      <p class="closing hand"><span>幫助 35～60 歲家庭，重新看懂自己的保險保障。</span></p>
+    </div>
+  </section>
+
+  <!-- 02 + 03 三個關鍵詞與語氣 -->
+  <section id="values">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">我的方式</span>
+        <h2>像朋友一樣聊天，但給你專業的分析。</h2>
+        <p>先講重點，再解釋原因。不丟一堆艱深術語，只用白話把事情說清楚。</p>
+      </div>
+      <div class="values">
+        <div class="value">
+          <div class="dot">專業</div>
+          <h3>專業的知識</h3>
+          <p>從條款到理賠實務，幫你逐項確認保障內容。</p>
+        </div>
+        <div class="value">
+          <div class="dot">誠實</div>
+          <h3>誠實的建議</h3>
+          <p>夠了就說夠了，不需要的商品，我不會讓你多買。</p>
+        </div>
+        <div class="value">
+          <div class="dot">好懂</div>
+          <h3>最簡單的話</h3>
+          <p>一張圖、幾句話，讓你自己就能說出家裡的保障。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 三個不要 -->
+  <section class="alt">
+    <div class="wrap principle">
+      <div>
+        <div class="section-head" style="margin-bottom:32px">
+          <span class="eyebrow">我的三個「不要」</span>
+          <h2>有些事，我堅持不做。</h2>
+        </div>
+        <ul class="nos">
+          <li><svg><use href="#no"/></svg>不要話術</li>
+          <li><svg><use href="#no"/></svg>不要製造焦慮</li>
+          <li><svg><use href="#no"/></svg>不要硬推商品</li>
+        </ul>
+      </div>
+      <div class="quote-card">
+        <span class="eyebrow">我的原則是</span>
+        <p>不給你壓力，<br>只給你選擇。</p>
+        <svg aria-hidden="true"><use href="#leaf"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 怎麼開始 -->
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">怎麼開始</span>
+        <h2>四個步驟，把保險整理清楚。</h2>
+      </div>
+      <!-- 照片 05：桌面俯拍，咖啡、筆記本、植物、保單文件（橫式） -->
+      <figure class="photo wide" style="margin-bottom:64px">
+        <svg class="ph" viewBox="0 0 480 200" role="img" aria-label="桌上的保單、筆記與咖啡"><use href="#s-still"/></svg>
+        <div class="stamp"><svg><use href="#leaf"/></svg></div>
+      </figure>
+      <div class="steps">
+        <div class="step">
+          <h3>輕鬆聊聊</h3>
+          <p>先聊聊你的家庭狀況和擔心的事，不用準備任何資料。</p>
+        </div>
+        <div class="step">
+          <h3>整理保單</h3>
+          <p>把你手上的保單整理成一張清楚的保障總表。</p>
+        </div>
+        <div class="step">
+          <h3>白話說明</h3>
+          <p>告訴你保了什麼、缺了什麼、哪裡重複了。</p>
+        </div>
+        <div class="step">
+          <h3>你來決定</h3>
+          <p>提供建議與選項，要不要調整，完全由你決定。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常見問題 -->
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">常見問題</span>
+        <h2>你可能想問的</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>幫我看保單要收費嗎？聊完一定要買嗎？</summary>
+          <p>保單健診是免費的，聊完也不需要買任何東西。如果你目前的保障已經足夠，我會直接告訴你。</p>
+        </details>
+        <details>
+          <summary>我的保險不是跟你買的，也可以問嗎？</summary>
+          <p>當然可以。不管保單在哪家公司、跟誰買的，我都可以幫你整理和說明。</p>
+        </details>
+        <details>
+          <summary>需要準備什麼資料？</summary>
+          <p>有保單或保單明細最好；沒有也沒關係，我們可以先從聊聊你的家庭狀況開始。</p>
+        </details>
+        <details>
+          <summary>可以幫爸媽或家人一起看嗎？</summary>
+          <p>可以，而且很建議。全家一起整理，最容易看出哪裡重複、哪裡缺漏。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 聯絡 -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <svg class="leaf" aria-hidden="true"><use href="#branch"/></svg>
+        <span class="eyebrow" style="color:var(--tea)">一起聊聊</span>
+        <h2>先把現況看清楚，<br>再決定要不要改變。</h2>
+        <p>傳個訊息給我，用 15 分鐘聊聊你家的保險。沒有壓力，只給你選擇。</p>
+        <div class="actions">
+          <!-- 把 # 換成你的 LINE 連結（例如 https://line.me/ti/p/你的ID）與 Email -->
+          <a class="btn" href="#">加 LINE 聊聊</a>
+          <a class="btn ghost" href="#">寄 Email 給我</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div>© 2026 男哥｜家庭保險規劃</div>
+      <!-- 登錄字號等資訊可放在這裡 -->
+    </div>
+    <div class="sign">專業讓你安心<br>溫度讓你放心</div>
+  </div>
+</footer>
+
+</body>
+</html>
