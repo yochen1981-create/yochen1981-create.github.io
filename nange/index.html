@@ -15,27 +15,28 @@
   --green: #456B59;       /* 主色 深墨綠 */
   --green-deep: #2F5444;  /* 深色色帶 */
   --tea: #D8C6A5;         /* 輔助色 奶茶：只當底色 */
-  --tea-soft: #EFE6D4;
-  --paper: #F7F5EF;       /* 底色 暖白 */
-  --card: #FFFDF8;
-  --ink: #23342C;
-  --muted: #5E6B63;
-  --line: #DDD5C4;
+  --tea-soft: #E8F1EE;
+  --paper: #F4F7F8;       /* 底色 冷白 */
+  --grid: rgba(69,107,89,.07);
+  --card: #FFFFFF;
+  --ink: #1F2D2A;
+  --muted: #5A6B70;
+  --line: #DCE4E8;
   --on-green: #F7F5EF;
   --serif: "Noto Serif TC", "Songti TC", serif;
   --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   --hand: "LXGW WenKai TC", "Kaiti TC", "DFKai-SB", serif;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --green: #8DB39F; --green-deep: #24453A; --tea-soft: #2E2C25; --paper: #18201C; --card: #212A25;
-  --ink: #ECE8DE; --muted: #A9B3AC; --line: #34413A; color-scheme: dark;
+  --green: #8DB39F; --green-deep: #24453A; --tea-soft: #1C2928; --paper: #111A1C; --card: #182326; --grid: rgba(141,179,159,.07);
+  --ink: #ECE8DE; --muted: #A9B3AC; --line: #2A3A3E; color-scheme: dark;
 } }
 :root[data-theme="dark"] {
-  --green: #8DB39F; --green-deep: #24453A; --tea-soft: #2E2C25; --paper: #18201C; --card: #212A25;
-  --ink: #ECE8DE; --muted: #A9B3AC; --line: #34413A; color-scheme: dark;
+  --green: #8DB39F; --green-deep: #24453A; --tea-soft: #1C2928; --paper: #111A1C; --card: #182326; --grid: rgba(141,179,159,.07);
+  --ink: #ECE8DE; --muted: #A9B3AC; --line: #2A3A3E; color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.8; }
+body { background-color: var(--paper); background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 32px 32px; color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.8; }
 .in { max-width: 980px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 section { padding-block: 64px; }
 h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 34px); line-height: 1.35; margin: 0 0 8px; text-wrap: balance; }
@@ -55,7 +56,7 @@ nav ul a { color: var(--muted); text-decoration: none; }
 nav ul a:hover { color: var(--green); }
 
 /* hero */
-.hero { background: var(--green-deep); color: var(--on-green); padding-block: 72px 80px; position: relative; overflow: hidden; }
+.hero { background-color: var(--green-deep); background-image: linear-gradient(rgba(247,245,239,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(247,245,239,.06) 1px, transparent 1px); background-size: 32px 32px; color: var(--on-green); padding-block: 72px 80px; position: relative; overflow: hidden; }
 .hero .in { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px; align-items: center; }
 .hero .who { font-size: 15px; letter-spacing: .2em; opacity: .85; margin: 0 0 16px; }
 .hero h1 { font-family: var(--hand); font-weight: 400; font-size: clamp(36px, 6.4vw, 60px); line-height: 1.35; margin: 0; text-wrap: balance; }
@@ -101,7 +102,7 @@ nav ul a:hover { color: var(--green); }
 
 /* principles */
 .nos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.no { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
+.no { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px; box-shadow: 0 1px 2px rgba(31,45,42,.04); }
 .no b { font-family: var(--serif); font-size: 20px; display: block; margin-bottom: 4px; }
 .no b::before { content: "不要"; font-size: 13px; color: var(--paper); background: var(--green); border-radius: 4px; padding: 1px 6px; margin-right: 8px; vertical-align: 3px; font-family: var(--sans); }
 .no p { margin: 0; font-size: 15px; color: var(--muted); }
@@ -122,7 +123,7 @@ nav ul a:hover { color: var(--green); }
 .todo { background: var(--tea-soft); border-radius: 4px; padding: 0 6px; color: var(--muted); font-size: .92em; }
 
 /* contact */
-.contact { background: var(--green-deep); color: var(--on-green); }
+.contact { background-color: var(--green-deep); background-image: linear-gradient(rgba(247,245,239,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(247,245,239,.06) 1px, transparent 1px); background-size: 32px 32px; color: var(--on-green); }
 .contact h2 { color: var(--on-green); }
 .contact .intro { color: inherit; opacity: .85; }
 .ways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
