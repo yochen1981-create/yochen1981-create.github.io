@@ -111,6 +111,13 @@ nav ul a:hover { color: var(--green); }
 .about .in { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; align-items: start; }
 .portrait { aspect-ratio: 4/5; max-width: 100%; border-radius: 14px; background: var(--tea-soft); border: 1px dashed var(--line); display: grid; place-items: center; text-align: center; color: var(--muted); font-size: 13px; padding: 16px; }
 .about p { margin: 0 0 14px; max-width: 36em; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 20px 0 0; max-width: 36em; }
+.facts div { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; }
+.facts .wide { grid-column: 1 / -1; }
+.facts dt { font-size: 12px; letter-spacing: .2em; color: var(--muted); }
+.facts dd { margin: 2px 0 0; font-family: var(--serif); font-size: 18px; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.facts dd b { font-size: 30px; color: var(--green); line-height: 1.2; }
+.chip { font-family: var(--sans); font-size: 14px; background: var(--tea-soft); border-radius: 999px; padding: 2px 12px; }
 .todo { background: var(--tea-soft); border-radius: 4px; padding: 0 6px; color: var(--muted); font-size: .92em; }
 
 /* contact */
@@ -171,7 +178,7 @@ footer p { margin: 0 0 4px; }
   <svg class="leaf-bg" viewBox="0 0 24 24" fill="none" stroke="#F7F5EF" stroke-width=".6" aria-hidden="true"><path d="M5 20c0-8 5-13 14-15-1 9-6 14-14 15Z"/><path d="M5 20 13 11"/></svg>
   <div class="in">
     <div>
-      <p class="who">男哥｜家庭保障顧問</p>
+      <p class="who">男哥｜家庭保障顧問　·　保險資歷 20 年</p>
       <h1>把複雜的保險，<br><em>說成你聽得懂的話。</em></h1>
       <p class="lede">幫 35～60 歲的家庭，重新看懂自己手上的保單。先弄清楚你有什麼、缺什麼，再決定要不要調整。</p>
       <div class="btns">
@@ -250,9 +257,13 @@ footer p { margin: 0 0 4px; }
     <div>
       <p class="kicker">關於男哥</p>
       <h2>像朋友提醒，不像業務推銷</h2>
-      <p>我是男哥，一位家庭保障顧問。我發現很多家庭不是保得太少，而是保了很多卻看不懂，等到真正需要時才發現跟想像的不一樣。</p>
+      <p>我是男哥，在保險業服務了 20 年。這些年我看到很多家庭不是保得太少，而是保了很多卻看不懂，等到真正需要時才發現跟想像的不一樣。</p>
       <p>所以我做事的方式很簡單：先把你手上的保單整理清楚，用白話說明，再陪你一起判斷要不要調整。</p>
-      <p><span class="todo">［請填入：從業年資、所屬公司、相關證照］</span></p>
+      <dl class="facts">
+        <div><dt>保險年資</dt><dd><b>20</b> 年</dd></div>
+        <div><dt>所屬公司</dt><dd>公勝保險經紀人</dd></div>
+        <div class="wide"><dt>專業證照</dt><dd><span class="chip">人壽保險</span><span class="chip">產物保險</span><span class="chip">投資型保險</span><span class="chip">外幣保險</span></dd></div>
+      </dl>
     </div>
   </div>
 </section>
@@ -273,7 +284,7 @@ footer p { margin: 0 0 4px; }
 
 <footer class="in">
   <p>© 2026 男哥｜家庭保障顧問</p>
-  <p>［請填入：所屬保險經紀人／代理人公司名稱、業務員登錄字號］</p>
+  <p>所屬公司：公勝保險經紀人　業務員登錄字號：［請填入］</p>
   <p>本頁內容為一般性保險知識說明，不構成特定商品推薦；投保前請詳閱各商品條款與建議書。</p>
 </footer>
 
