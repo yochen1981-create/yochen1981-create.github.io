@@ -211,11 +211,11 @@ body { background: var(--paper); }
 @media (max-width: 560px) { .wave { height: 44px; } .wave.top { transform: translateY(-43px); margin-bottom: -13px; } }
 .hero .pledge { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 28px; max-width: 540px; }
 .hero .pledge div { grid-template-columns: minmax(0, 1fr); justify-items: start; gap: 8px; padding: 14px; }
-.hero .pledge .w { width: 48px; height: 48px; font-size: 15px; }
+.hero .pledge .w { width: auto; min-width: 48px; height: 40px; padding: 0 14px; border-radius: 999px; font-size: 15px; white-space: nowrap; }
 .hero .pledge span { font-size: 13px; line-height: 1.6; }
 .hero .pledge span.w1 { color: #FFFFFF; }
 body { margin: 0; }
-@media (max-width: 420px) { .hero .pledge { grid-template-columns: minmax(0, 1fr); } .hero .pledge div { grid-template-columns: 48px minmax(0, 1fr); align-items: center; } }
+@media (max-width: 420px) { .hero .pledge { grid-template-columns: minmax(0, 1fr); } .hero .pledge div { grid-template-columns: auto minmax(0, 1fr); align-items: center; } }
 </style>
 </head>
 <body>
@@ -247,9 +247,9 @@ body { margin: 0; }
         <a class="btn ghost" href="#translate">先看看保險白話翻譯</a>
       </div>
       <div class="pledge" aria-label="三個關鍵詞">
-      <div><span class="w w1">專業</span><span>用專業的知識，幫你把保單整理清楚。</span></div>
-      <div><span class="w w2">誠實</span><span>夠了就說夠了，不需要的不會推給你。</span></div>
-      <div><span class="w w3">好懂</span><span>先講結論，再用白話解釋原因。</span></div>
+      <div><span class="w w1">值得信任</span><span>說到做到，不確定的事不亂講，條款都以保單為準。</span></div>
+      <div><span class="w w2">穩重</span><span>20 年的經驗，不誇大、不催促，陪你慢慢看清楚。</span></div>
+      <div><span class="w w3">親切</span><span>先聽你的狀況，再用白話說明。</span></div>
       </div>
     </div>
     <div class="blob"><img id="hero-photo" alt="男哥" width="600" height="750"></div>
